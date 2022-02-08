@@ -16,8 +16,11 @@ label1 = tk.Label(image=test)
 label1.image = test
 label1.place(x=-2, y=-2)
 def task():
-    if(len(c.Win32_PhysicalMedia()) > 1):
-        window.destroy()
+    try:
+        if(c.Win32_PhysicalMedia()[1].SerialNumber.find("F") != -1):
+            window.destroy()
+    except:
+        print("Fout! MWAHAHAHAHA Groetjes, de hekkers")
     window.after(1000, task)
 
 window.after(1000, task)
